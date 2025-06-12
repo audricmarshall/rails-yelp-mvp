@@ -1,5 +1,5 @@
-class ApplicationController < ActionController::Base
-  before_action :set_restaurant, only: [:show]
+class RestaurantsController < ApplicationController
+  before_action :set_restaurant, only: [:show] # DRY si jamais besoin de rajouter edit destroy update ...
 
   def index
     @restaurants = Restaurant.all
