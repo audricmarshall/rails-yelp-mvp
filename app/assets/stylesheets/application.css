@@ -13,3 +13,325 @@
  *= require_tree .
  *= require_self
  */
+
+ /* global theme */
+
+:root {
+  /* utilisation de la pseeudo class root pour ccibler la racine du projet (donc le html)
+  ( https://developer.mozilla.org/fr/docs/Web/CSS/:root)
+  , je cree une palette personnalisée avec root pour garder des couleurs cohérentes partout
+  c’est plus simple à modifier plus tard si on veut changer le thème du site, on peut les réutiliser en tant qu e variable dans les class css
+   */
+  --clr-primary-100: #6366f1;
+  --clr-primary-200: #2563eb;
+  --clr-success-100: #34d399;
+  --clr-success-200: #10b981;
+  --clr-success-300: #059669;
+  --clr-grey-700: #1f2937;
+  --clr-grey-300: #e5e7eb;
+}
+
+/* theme general */
+
+body {
+  background: linear-gradient(120deg, #f6fafd 0%, #eaeaea 100%);
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: #212529;
+  min-height: 100vh;
+}
+
+h1, h3, h4 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* navbar  */
+
+.navbar {
+  background-image: url('/assets/channels4_banner.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  background: rgba(0, 0, 0, 0.5); /* fond sombre semi-transparent */
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.5rem;
+}
+
+.navbar::before {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* couche blanche légèrement opaque */
+  z-index: 0;
+}
+
+.navbar * {
+  position: relative;
+  z-index: 1;
+}
+
+/* card restaurant */
+
+.card {
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px rgba(90, 105, 120, 0.05);
+  border: none;
+  transition: box-shadow 0.2s, transform 0.17s;
+}
+.card:hover {
+  box-shadow: 0 8px 32px rgba(90, 105, 120, 0.15);
+  transform: translateY(-3px) scale(1.018);
+}
+.card-title {
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+.card-body {
+  padding-bottom: 1.3rem;
+}
+
+.badge.bg-info {
+  background: linear-gradient(120deg, #c7d2fe 0%, #38bdf8 100%);
+  color: #002246 !important;
+  font-size: .92em;
+  border-radius: 0.65em;
+  font-weight: 600;
+  padding: 0.4em 0.9em;
+  letter-spacing: 0.04em;
+}
+
+/* boutons principaux */
+
+.btn-primary {
+  background: linear-gradient(120deg, var(--clr-primary-100), var(--clr-primary-200)) !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600;
+  box-shadow: 0 3px 18px #2563eb25;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.btn-outline-primary {
+  border-color: var(--clr-primary-100);
+  color: var(--clr-primary-100);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(2px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* survol / focus (si le bouton n’est PAS disabled) */
+.btn-primary:not(:disabled):hover,
+.btn-primary:not(:disabled):focus {
+  transform: scale(1.045) translateY(-2px);
+  box-shadow: 0 5px 18px -2px #2563eb66;
+  outline: 2px solid var(--clr-primary-200);
+  outline-offset: 2px;
+}
+
+/* clic maintenu */
+.btn-primary:not(:disabled):active {
+  background: linear-gradient(120deg, #1d4ed8, var(--clr-primary-100)) !important;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, .15);
+  transform: scale(.98);
+}
+
+/* état désactivé, on garde un bleu atténué, visible */
+.btn-primary:disabled,
+.btn-primary[disabled],
+fieldset:disabled .btn-primary {
+  background: #bcd2ff !important;
+  color: #1f2937 !important;
+  cursor: not-allowed;
+  box-shadow: none !important;
+  opacity: .9;
+}
+
+/* bouton personnnalisé */
+
+/* etat normal */
+.btn-success {
+  background: linear-gradient(100deg, var(--clr-success-100), var(--clr-success-200)) !important;
+}
+
+/* hover / focus (seulement si NON disabled) */
+.btn-success:not(:disabled):hover,
+.btn-success:not(:disabled):focus {
+  background: linear-gradient(100deg, #2ecc71, var(--clr-success-200)) !important;
+  transform: scale(1.045) translateY(-2px);
+  box-shadow: 0 5px 18px -2px #10b98166;
+  outline: 2px solid var(--clr-success-200);
+  outline-offset: 2px; /* accessibilité */
+}
+
+/* actif (clic maintenu) */
+.btn-success:not(:disabled):active {
+  background: linear-gradient(100deg, var(--clr-success-300), #0f9966) !important;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.15);
+  transform: scale(.98);
+}
+
+/* Disabled */
+.btn-success:disabled,
+.btn-success[disabled],
+fieldset:disabled .btn-success {
+  background: #a7f3d0 !important;
+  color: var(--clr-grey-700) !important;
+  cursor: not-allowed;
+  box-shadow: none !important;
+  opacity: .8;
+}
+
+/* Liens d’action « link‑to » */
+.btn-link {
+  color: var(--clr-primary-100);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .13s;
+}
+.btn-link:hover {
+  color: var(--clr-primary-200);
+  text-decoration: underline;
+}
+
+/* simple form input select et label */
+
+.simple_form input,
+.simple_form select,
+.simple_form textarea {
+  border-radius: .85rem;
+  border: 1.5px solid var(--clr-grey-300);
+  background: #fafdff;
+  font-size: 1.08em;
+  margin-bottom: .4em;
+  transition: border .15s;
+}
+.simple_form input:focus,
+.simple_form select:focus,
+.simple_form textarea:focus {
+  border-color: var(--clr-primary-100);
+  outline: none;
+}
+.simple_form label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 1.04em;
+  margin-bottom: .2em;
+}
+.simple_form .form-group {
+  margin-bottom: 1.2rem;
+}
+
+/* fix icones windows */
+.simple_form select {
+  appearance: none !important;
+  background-image: none !important;
+  background-color: #fff;
+}
+
+/* avis et revies */
+
+.list-group-item {
+  border: none;
+  border-radius: .75em !important;
+  margin-bottom: .33em;
+  background: #f8fafc;
+  box-shadow: 0 1px 7px rgba(90, 105, 120, 0.06);
+  transition: box-shadow .15s;
+}
+.list-group-item:hover {
+  box-shadow: 0 3px 12px rgba(90, 105, 120, 0.12);
+}
+
+/* breakpoint(responsnive) et container */
+
+.container {
+  padding-block: 2.1rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card, .navbar, .btn, .form-control {
+    transition: all .22s cubic-bezier(.25, .8, .25, 1);
+  }
+}
+
+@media (max-width: 900px) {
+  .card { margin-bottom: 1.6rem; }
+  .row { gap: .8rem 0; }
+}
+
+@media (max-width: 600px) {
+  .container { padding: 1.1rem .3rem; }
+  .card { border-radius: 1em; margin-bottom: 1.5rem; }
+  h1 { font-size: 1.6rem; }
+  body { padding-top: 0.5rem; }
+}
+
+/* responsive navbar */
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.2rem 1rem 2rem;
+    background-size: cover;
+    background-position: top;
+    gap: 0.8rem;
+  }
+
+  .navbar > .container {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .navbar .navbar-brand {
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+    border-radius: 0.5rem;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+  }
+
+  .navbar .btn {
+    width: 90%;
+    max-width: 320px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.05rem;
+    border-radius: 1rem;
+  }
+
+  .navbar .btn-outline-primary {
+    background-color: #ffffffcc;
+    border: 2px solid var(--clr-primary-100);
+    color: var(--clr-primary-100);
+    font-weight: 600;
+    backdrop-filter: blur(2px);
+    text-shadow: none;
+  }
+
+  .navbar .btn-outline-primary:hover {
+    background-color: var(--clr-primary-100);
+    color: white;
+  }
+
+  .navbar .btn + .btn {
+    margin-top: 0.4rem; /* espacement entre les 2 boutons */
+  }
+}
