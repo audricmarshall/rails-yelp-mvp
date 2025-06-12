@@ -11,6 +11,15 @@
   </head>
 
   <body>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="<%= root_path %>">Yelp MVP</a>
+        <div>
+          <%= link_to "Restaurants", restaurants_path, class: "btn btn-outline-primary me-2" %>
+          <%= link_to "Ajouter un restaurant", new_restaurant_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

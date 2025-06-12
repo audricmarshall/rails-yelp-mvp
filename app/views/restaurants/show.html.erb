@@ -1,0 +1,24 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <p><strong>Adresse :</strong> <%= @restaurant.address %></p>
+  <p><strong>Téléphone :</strong> <%= @restaurant.phone_number %></p>
+  <p><strong>Catégorie :</strong> <%= @restaurant.category.capitalize %></p>
+
+  <hr>
+  <h3>Avis</h3>
+  <ul class="list-group mb-3">
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span>
+          <%= review.content %>
+          <small class="text-muted"> — note : <%= review.rating %>/5</small>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+
+  <h4>Laisser un avis</h4>
+  <%= render "reviews/form", restaurant: @restaurant, review: @review %>
+
+  <%= link_to "Retour à la liste", restaurants_path, class: "btn btn-link mt-3" %>
+</div>

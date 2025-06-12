@@ -1,0 +1,7 @@
+<%= simple_form_for restaurant do |f| %>
+  <%= f.input :name, label: "Nom" %>
+  <%= f.input :address, label: "Adresse" %>
+  <%= f.input :phone_number, label: "Téléphone" %>
+  <%= f.input :category, collection: Restaurant::CATEGORIES, label: "Catégorie", prompt: "Choisir une catégorie" %>
+  <%= f.button :submit, "Créer le restaurant", class: "btn btn-primary" %>
+<% end %>

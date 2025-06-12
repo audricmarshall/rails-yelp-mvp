@@ -1,0 +1,5 @@
+<div class="container">
+  <h1>Laisser un avis sur <%= @restaurant.name %></h1>
+  <%= render "reviews/form", restaurant: @restaurant, review: @review %>
+  <%= link_to "Retour au restaurant", restaurant_path(@restaurant), class: "btn btn-link mt-3" %>
+</div>
