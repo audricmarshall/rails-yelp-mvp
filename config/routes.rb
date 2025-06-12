@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
     # pour GET new review et POST create review
   end
-  root to: "restaurants#application"
+  root to: "restaurants#index"
   # je le mets maintenant meme si je n'ai pas de view encore pour
   # préshot la root vers l'index et éviter la page de rails
 end
