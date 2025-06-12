@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :restaurants, only: [:index, :new, :create, :show] do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:create] # enlevé new car rsec me dit
+    # doesn't route to #new anymore (FAILED - 1)
     # pour GET new review et POST create review
   end
   root to: "restaurants#index"
